@@ -3,15 +3,123 @@
 using namespace std;
 // https://www.tutorialspoint.com/cplusplus/cpp_strings.htm
 
+
+//https://es.wikibooks.org/wiki/Programaci%C3%B3n_en_C%2B%2B/Herencia
+
 int glob;
 
 #define PI 3.14159
+
 
 int factorial(int a);
 void dont_modify( double a);
 void modify1( double *a);
 void modify2( double &a);
 void sine_func( double x[], double f[], int N);
+
+
+// DECLARACIONES
+//
+
+// Definición de una clase base para vehiculos
+class VehiculoRodante
+{
+public:
+ // CICLO DE VIDA
+ /* En este lugar se sitúan los constructores, los destructores, y/o los constructores copia */
+
+ // OPERADORES
+ /* Aquí van los métodos que se apliquen sobre operadores */
+
+ // OPERACIONES
+ /* Aquí van los métodos de esta clase que no sean ni de acceso ni de petición o tratamiento */
+
+ /*
+ * Función 'set_ruedas'
+ * Asigna al dato miembro 'mRuedas' el valor 'num'
+ */
+ void set_ruedas(int num)
+ {
+  this->mRuedas = num;
+ }
+
+ /*
+ * Función 'get_ruedas'
+ * Devuelve el valor que hay dentro del dato miembro 'mRuedas'
+ */
+ int get_ruedas(void)
+ {
+  return this->mRuedas;
+ }
+
+ /*
+ * Función 'set_pasajeros'
+ * Asigna al dato miembro 'mPasajeros' el valor 'num'
+ */
+ void set_pasajeros(int num)
+ {
+  this->mPasajeros = num;
+ }
+
+ /*
+ * Función 'get_pasajeros'
+ * Devuelve el valor que hay dentro del dato miembro 'mPasajeros'
+ */
+ int get_pasajeros(void)
+ {
+  return this->mPasajeros;
+ }
+
+private:
+ /* Generalmente en 'private' se sitúan los datos miembros */
+ int mRuedas;
+ int mPasajeros;
+};
+
+// Definición de una clase 'Camion' derivada de la clase base 'VehiculoRodante'.
+class Camion : public VehiculoRodante
+{
+
+public:
+ /*
+ * Función 'set_carga'
+ * Asigna al dato miembro 'mCarga' el valor 'size'
+ */
+ void set_carga(int size)
+ {
+  this->mCarga = size;
+ }
+
+ /*
+ * Función 'get_carga'
+ * Devuelve el valor que hay dentro del dato miembro 'mCarga'
+ */
+ int get_carga(void)
+ {
+  return this->mCarga;
+ }
+
+
+ /*
+ * Función 'Mostrar'
+ * Muestra por pantalla las ruedas, pasajeros y la capacidad de carga del objeto 'Camion'
+ */
+ void Mostrar(void);
+
+ // PETICIONES/TRATAMIENTOS
+ /* Aquí van las funciones del tipo "Is", que generalmente devuelven true/false */
+
+private:
+ /* Generalmente en 'private' se sitúan los datos miembros */
+ int mCarga;
+};
+
+void Camion::Mostrar(void)
+{
+ std::cout << "ruedas: " << this->get_ruedas() << std::endl;
+ std::cout << "pasajeros: " << this->get_pasajeros() << std::endl;
+ std::cout << "Capacidad de carga en pies cúbicos: " << this->get_carga() << std::endl;
+}
 
 // main() is where program execution begins.
 int main() {
@@ -62,6 +170,24 @@ int main() {
     sine_func(x, f,  N);
     cout << "sin(2pi)=" << f[N-1] << endl;
 
+    
+    
+    /// Para usar las clase definidas
+    Camion Camion1;
+  Camion Camion2;
+    
+    Camion1.set_ruedas(18);
+  Camion1.set_pasajeros(2);
+  Camion1.set_carga(3200);
+
+  Camion2.set_ruedas(6);
+  Camion2.set_pasajeros(3);
+  Camion2.set_carga(1200);
+
+  Camion1.Mostrar();
+  std::cout << std::endl;
+  Camion2.Mostrar();
+  std::cout << std::endl;
     
     
     return 0;
