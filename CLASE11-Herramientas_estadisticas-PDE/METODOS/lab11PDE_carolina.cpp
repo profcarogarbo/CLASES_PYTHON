@@ -38,7 +38,7 @@ int myarrprnorm(float xx[],float aaa[],int tam,char filename[])
 
 int main ()
 {
-float tau=0.002;  //paso en el tiempo
+float tau=0.0002;  //paso en el tiempo
 float ele=1.0;    //system size - dimension
 float ache=ele/ene; // grid spacing
 float velo=1; // velocidad del flujo
@@ -85,7 +85,9 @@ for(mcount=0;mcount<ene;mcount++)
  std::cout <<"el numero de pasos en el tiempo es "<<nstep<<std::endl;
  std::cout <<"el numero de pasos en el espacio es "<<ene<<std::endl;
 
-  for(mcount=0;mcount<nstep;mcount++)
+  //for(mcount=0;mcount<nstep;mcount++)
+	  
+  for(mcount=0;mcount<500;mcount++)
     {
       coeff=-velo*tau/(2*ache); // coeficiente para el metodo FTCS
           //frontera periodica
